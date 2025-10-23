@@ -26,8 +26,8 @@ COPY --from=builder /usr/src/app/dist ./dist
 COPY --from=builder /usr/src/app/node_modules ./node_modules
 COPY prisma ./prisma
 
-ENV NODE_ENV=production
+ENV NODE_ENV=development
 EXPOSE 3000
 
 # DEV - Apply migrations and start in watch mode
-CMD ["sh", "-c", "npm run start:dev"]
+CMD ["sh", "-c", "npx prisma migrate deploy && npm run start:dev"]

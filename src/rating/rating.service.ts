@@ -1,10 +1,12 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { CreateRatingDto } from './dto/create-rating.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class RatingService {
   constructor(private prisma: PrismaService) {}
+  private readonly logger = new Logger(RatingService.name);
+
 
   async create(userId: string, dto: CreateRatingDto) {
     // if user already rated, update instead of creating a new one
@@ -19,13 +21,17 @@ export class RatingService {
       });
     }
 
-    return this.prisma.rating.create({
-      data: {
+    const data = {
         userId,
         productId: dto.productId,
         value: dto.value,
         comment: dto.comment,
-      },
+      };
+
+    this.logger.log('Creating object with values', data);
+
+    return this.prisma.rating.create({
+      data: data,
     });
   }
 }

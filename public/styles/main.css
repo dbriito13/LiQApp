@@ -1,0 +1,122 @@
+:root {
+  --color-bg: #fffbf5;       /* light beige */
+  --color-primary: #fffbf5;  /* deep red-brown */
+  --color-secondary: #e2a68c;/* copper highlight */
+  --color-accent: #b9706d;   /* soft gold */
+  --color-text: #2d2d2d;     /* dark charcoal */
+  --color-muted: #a9a9a9;    /* for subtle borders/text */
+  --color-navbar-hover: #f5e8df; 
+  --color-primary-hover: #a15c50;  /* lighter reddish for hover */
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-bg);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+}
+
+/* Inputs */
+.form-control {
+  border-radius: 4px; /* match previous style */
+}
+
+/* Error alerts */
+.alert-danger {
+  background-color: var(--color-error-bg);
+  color: var(--color-error-text);
+  border-color: var(--color-error-border);
+}
+
+.navbar {
+    background-color: var(--color-primary);
+    padding: 1rem;
+    flex-direction: column;
+}
+
+.navbar::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 5%;        /* centers the border (100% - 90%) / 2 */
+  width: 90%;      /* border length */
+  height: 2px;     /* border thickness */
+  background-color: var(--color-secondary); /* border color */
+}
+
+.navbar .navbar-brand,
+.navbar .navbar-text {
+  color: var(--color-text);
+}
+
+/* Navbar buttons */
+.navbar .btn {
+  background-color: var(--color-secondary); /* beige */
+  color: var(--color-text); /* text in brown-red */
+  border: 0px solid var(--color-bg);
+  transition: 0.2s;
+  border-radius: 0.25rem;
+}
+
+.navbar .btn:hover {
+  background-color: var(--color-navbar-hover); /* slightly darker beige for hover */
+  color: var(--color-text);
+}
+
+.alert {
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  margin-top: 1rem;
+  font-weight: 500;
+  color: #fff; /* text color */
+  background-color: var(--color-error-bg, #c53030); /* default red if variable missing */
+  border: 1px solid var(--color-error-border, #9b2c2c);
+}
+
+.searchbar {
+  position: relative;
+  width: 80%;            /* 80% of container */
+  max-width: 600px;      /* optional cap for large screens */
+  border: 4px var(--color-text);
+}
+
+.search_input {
+  width: 100%;
+  border-radius: 50px;
+  border: 1px solid var(--color-text);
+  padding: 8px 45px 8px 15px;
+  outline: none;
+  background-color: var(--color-bg);
+}
+
+.search_icon_button {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search_icon_button i {
+  color: var(--color-accent);
+  font-size: 1.2rem;
+}

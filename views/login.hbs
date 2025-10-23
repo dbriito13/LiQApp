@@ -1,8 +1,47 @@
-<h1>Login</h1>
-<form method="POST" action="/auth/login">
-  <label>Email</label>
-  <input type="email" name="email" required>
-  <label>Password</label>
-  <input type="password" name="password" required>
-  <button type="submit">Login</button>
-</form>
+{{!< main}}
+
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="card p-4 shadow" style="min-width: 350px; max-width: 400px; width: 100%;">
+    <h1 class="card-title text-center mb-4">Login</h1>
+
+    <form method="POST" action="/auth/login">
+
+      <!-- Email -->
+      <div class="mb-3">
+        <label class="form-label" for="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          name="email"
+          value="{{email}}"
+          class="form-control {{#if errors.email}}is-invalid{{/if}}"
+          required
+        >
+        {{#if errors.email}}
+          <div class="invalid-feedback">{{errors.email}}</div>
+        {{/if}}
+      </div>
+
+      <!-- Password -->
+      <div class="mb-3">
+        <label class="form-label" for="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          name="password"
+          class="form-control {{#if errors.password}}is-invalid{{/if}}"
+          required
+        >
+        {{#if errors.password}}
+          <div class="invalid-feedback">{{errors.password}}</div>
+        {{/if}}
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Login</button>
+    </form>
+
+    <p class="text-center mt-3 mb-0">
+      Don't have an account? <a href="/auth/register">Register here</a>
+    </p>
+  </div>
+</div>
